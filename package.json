@@ -1,0 +1,16 @@
+{
+  "name": "vr-for-agents",
+  "version": "1.0.0",
+  "description": "Virtual world for LLM agents with embodied control",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

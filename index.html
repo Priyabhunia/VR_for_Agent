@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR for Agents — Virtual World</title>
+  <link rel="stylesheet" href="/src/styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div id="viewport-panel">
+      <canvas id="world-canvas"></canvas>
+      <div id="hud">
+        <div id="agent-status">
+          <span class="status-dot"></span>
+          <span id="agent-state-text">Idle</span>
+        </div>
+        <button id="btn-follow-agent" class="active" title="Toggle camera follow (F to focus, Home to reset)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+          </svg>
+          <span>Follow</span>
+        </button>
+        <div id="world-info">
+          <span id="position-display">Pos: 0, 0</span>
+        </div>
+      </div>
+      <div id="controls-hint">
+        <span>🖱 Drag: Orbit</span>
+        <span>Ctrl+Drag: Pan</span>
+        <span>Scroll: Zoom</span>
+        <span>F: Focus</span>
+        <span>Home: Reset</span>
+      </div>
+    </div>
+    <div id="console-panel">
+      <div id="console-header">
+        <h2>Agent Console</h2>
+        <div id="mode-toggle">
+          <button id="btn-manual" class="mode-btn active">Manual</button>
+          <button id="btn-llm" class="mode-btn">LLM Mode</button>
+        </div>
+      </div>
+      <div id="llm-config" class="hidden">
+        <span id="ollama-status" style="font-size:0.75rem;color:var(--text-muted,#888);padding:0 0.25rem;">🟢 Ollama
+          (local)</span>
+        <input type="text" id="llm-goal-input" placeholder="Give the agent a goal..." />
+        <button id="btn-start-llm">Start Agent</button>
+        <button id="btn-stop-llm" class="hidden">Stop</button>
+      </div>
+      <div id="console-output"></div>
+      <div id="quick-actions">
+        <button class="action-btn" data-cmd="agent.scan()">📡 Scan</button>
+        <button class="action-btn" data-cmd="agent.getState()">📍 State</button>
+        <button class="action-btn" data-cmd="agent.say('Hello world!')">💬 Say Hi</button>
+        <button class="action-btn" data-cmd="agent.moveForward(2)">⬆️ Forward</button>
+      </div>
+      <div id="console-input-area">
+        <span class="prompt-symbol">›</span>
+        <input type="text" id="console-input" placeholder="agent.moveTo(5, 3)" autocomplete="off" />
+      </div>
+    </div>
+  </div>
+  <div id="speech-bubble" class="hidden">
+    <span id="speech-text"></span>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
